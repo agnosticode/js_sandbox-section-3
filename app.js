@@ -1,50 +1,37 @@
-let val;
+//document.getElementById()
 
-val=document;
-val=document.all;//Collection of elements
-val=document.all[0];//can access easy element by index
-val=document.all.length;//43
-val=document.head;//Head element accessed
-val=document.body;//body element accessed
-val=document.doctype;//doctype accessed
-val=document.domain;
-val=document.URL;
-val=document.characterSet;//UTF-8
-val=document.contentType;//text/html
+// console.log(document.getElementById('task-title'))
 
-//Can select elements but not recommended
-val=document.forms;
-val=document.forms[0];//accessed form
-val=document.forms[0].id;//task-form
-val=document.forms[0].method;//get
-val=document.forms[0].action;//e.g index.php
+// //Get things from the element
+// console.log(document.getElementById('task-title').id);//task-title
+// console.log(document.getElementById('task-title').className);//nothing-because we don't have class in this element 
 
-val=document.links;//Collection of six links
-val=document.links[0];//fiest link accessed
-val=document.links[0].id;
-val=document.links[0].className;//accessed classes
-val=document.links[0].classList;//Collection of classes
-val=document.links[0].classList[0];//Sepecfic class
+// const taskTitle=document.getElementById('task-title'); 
 
-val=document.images;//Empty colleciton-don't have any images
+// //Change styling
+// taskTitle.style.background='#333';
+// taskTitle.style.color='#fff';
+// taskTitle.style.padding='5px';
+// //document.getElementById('task-title').style.display='none';//disappear*****
 
-val=document.scripts;//Colleciton of scripts
-val=document.scripts[2].getAttribute('src');//app.js
+// //Change Content
+// taskTitle.textContent='Task List';
+// taskTitle.innerText='My Tasks';
+// taskTitle.innerHTML='<span style="color:red">Task List</span>';
 
+//document.querySelector()
 
-//using forEach without coverting them to array---ERROR
-let scripts=document.scripts;
-// val=scripts.forEach(function(script){
-//   console.log(script);
-// })
+console.log(document.querySelector('#task-title'));
+console.log(document.querySelector('.card-title'));
+console.log(document.querySelector('h5'));//first One
 
-//Convert Collections into an array
-let scriptsArr=Array.from(scripts);
+document.querySelector('li').style.color='red';
+document.querySelector('ul li').style.color='blue';
 
-val=scriptsArr.forEach(function(script){
-  console.log(script);
-})
+document.querySelector('li:last-child').style.color='blue';
+document.querySelector('li:nth-child(3)').style.color='yellow';
+document.querySelector('li:nth-child(4)').textContent='Hello World';
+document.querySelector('li:nth-child(odd)').style.background='#ccc';
+document.querySelector('li:nth-child(even)').style.background='#f4f4f4';
 
 
-
-console.log(val);
