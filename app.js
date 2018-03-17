@@ -1,50 +1,55 @@
-//document.getElementsByClassName
+let val;
 
-// const items=document.getElementsByClassName('collection-item');
-// console.log(items);
-// console.log(items[0]);
+const list=document.querySelector('ul.collection');
+const listItem=document.querySelector('li.collection-item:first-child');//Select the first one
 
-// items[0].style.color="red";
-// items[3].textContent="Hello Satinder";
+val=listItem;
+val=list;
 
-// const listItems=document.querySelector('ul').getElementsByClassName('collection-item');
-// console.log(listItems); 
+//Get child node--return nodelist
+val=list.childNodes;//nodelist = li nodes + text nodes***
+val=list.childNodes[0];
+val=list.childNodes[0].nodeName;
+val=list.childNodes[0].nodeType;
 
-//document.getElementsByTagName
-// let lis=document.getElementsByTagName('li');
-// console.log(lis);
-// console.log(lis[0]);
-// lis[0].style.color="red";
-// lis[3].textContent="Hello Satinder";
+// 1 - Element
+// 2 - Attribute (deprecated)
+// 3 - Text node
+// 8 - Comment
+// 9 - Document itself
+// 10 - Doctype
 
-// //Covet HTML collection into an Array
-// lis=Array.from(lis);
-// console.log(lis);
+//Get children element nodes---return HTML Collection
+val=list.children;
+val=list.children[1].textContent='Hello';
 
-// lis=lis.reverse();
-// console.log(lis);
+//Get children of children
+val=list.children[3].children[0].id='test-link';
+val=list.children[3].children[0];
 
-// lis.forEach(function(li,index){
-//   console.log(li);
-//   li.textContent=`${index}: Hello`;
-// })
+//First child
+val=list.firstChild;//first node
+val=list.firstElementChild;//element node
 
-//document.querySelectorAll
-const items=document.querySelectorAll('ul.collection li.collection-item');
-console.log(items);
+//last child
+val=list.lastChild;//last node
+val=list.lastElementChild;//element node
 
-items.forEach(function(item,index){
-  item.textContent=`${index} Hello`;
-});
+//Count child elements
+val=list.childElementCount;
 
-const liOdd=document.querySelectorAll('li:nth-child(odd)');
-const liEven=document.querySelectorAll('li:nth-child(even)');
+//Get parent node
+val=listItem.parentNode;//ul element
+val=listItem.parentElement;//ul element
+val=listItem.parentElement.parentElement;//
 
-liOdd.forEach(function(li,index){
-  li.style.background='#ccc';
-});
+//Get next sibling
+val=listItem.nextSibling;//#text
+val=listItem.nextElementSibling;//li element
+val=listItem.nextElementSibling.nextElementSibling;//li element
 
-liEven.forEach(function(li,index){
-  li.style.background='#333';
-  li.style.color='#fff';
-});
+//Get previous sibling
+val=listItem.previousSibling;//#text
+val=listItem.previousElementSibling;//null
+
+console.log(val);
