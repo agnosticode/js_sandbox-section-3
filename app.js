@@ -1,34 +1,56 @@
-//Create a Element
-const li=document.createElement('li');
+//Replace Element
 
 
-//Add Class
-li.className='collection-item';
-
+//Create Element
+const newHeading=document.createElement('h2');
 //Add id
-li.id='new-item';
+newHeading.id='task-title';
+//New text node
+newHeading.appendChild(document.createTextNode('Task List'));
 
-//Add attribute
-li.setAttribute('title','New Item');
+//Get the old heading
+const oldHeading=document.getElementById('task-title');
+//Parent
+const cardAction=document.querySelector('.card-action');
 
-//Create text node and append-put something in the li
-li.appendChild(document.createTextNode('Hello World'));
+//Replace
+cardAction.replaceChild(newHeading,oldHeading);
 
-//Create new link element
-const link=document.createElement('a');
+//Remove element
+const lis=document.querySelectorAll('li');
+const list=document.querySelector('ul');
 
+//Remove list item
+lis[0].remove();
+
+//Remove child element
+list.removeChild(lis[3]);
+
+//Classes and Attribute
+const firstLi=document.querySelector('li:first-child');
+const link=firstLi.children[0];
+
+let val;
+
+//CLASSES
+val=link.className;//String of classes
+val=link.classList;//DOM token list
+val=link.classList[0];
 //Add class
-link.className='delete-item secondary-content';
+link.classList.add('test');
+//remove class
+link.classList.remove('test');
+val=link;
 
-//Add icon hrml
-link.innerHTML='<i class="fa fa-remove"></i>';
+//ATTRIBUTES
+//get attribute
+val=link.getAttribute('href');
+//setAttribute
+val=link.setAttribute('href','https://www.google.com');
+//check if attribute
+val=link.hasAttribute('href');//true
+//remove attribute
+//val=link.removeAttribute('href');
+val=link;
 
-//Append link into li
-li.appendChild(link);
-
-//Append li as child to ul
-document.querySelector('ul.collection').appendChild(li);
-
-
-
-console.log(li);
+console.log(val);
