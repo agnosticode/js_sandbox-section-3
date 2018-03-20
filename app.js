@@ -1,50 +1,35 @@
-const form=document.querySelector('form');
-const taskInput=document.getElementById('task');
-const heading=document.querySelector('h5');
-const select=document.querySelector('select');
+//Event Bubbling
+// cardTitle=document.querySelector('.card-title');
+// cardTitle.addEventListener('click',function(){
+//     console.log(cardTitle);
+// });
 
-//Empty the input field
-taskInput.value='';
+// cardContent=document.querySelector('.card-content');
+// cardContent.addEventListener('click',function(){
+//     console.log(cardContent);
+// });
 
-//EVENT ON FORM
-//form.addEventListener('submit',runEvent);
+// card=document.querySelector('.card');
+// card.addEventListener('click',function(){
+//     console.log(card);
+// });
 
-//EVENT ON TASKINPUT
-//keydown
-//taskInput.addEventListener('keydown',runEvent);
-//keyup
-//taskInput.addEventListener('keyup',runEvent);
-//keypress
-//taskInput.addEventListener('keypress',runEvent);
-//focus
-//taskInput.addEventListener('focus',runEvent);
-//blur
-//taskInput.addEventListener('blur',runEvent);
-//cut
-//taskInput.addEventListener('cut',runEvent);
-//paste
-//taskInput.addEventListener('paste',runEvent);
-//copy
-//taskInput.addEventListener('copy',runEvent);
-//input
-//taskInput.addEventListener('input',runEvent);
-//change
-//select.addEventListener('change',runEvent);
+// col=document.querySelector('.col');
+// col.addEventListener('click',function(){
+//     console.log(col);
+// });
 
+//Event delegation
+// const delItem=document.querySelector('.delete-item');
+// delItem.addEventListener('click',deleteItem);
 
+//Instead of puttin event listerner on individual element let put it on the parent 
+document.body.addEventListener('click',deleteItem);
 
-
-
-function runEvent(e){
-    console.log(`Event Type: ${e.type}`); 
-
-    //get the value of keydown
-    //console.log(e.target.value);
-    
-    //heading.textContent=e.target.value;
-
-    // Get input value
-    // console.log(taskInput.value);
-
-    // e.preventDefault();
-}
+function deleteItem(e){
+    // if(e.target.parentElement.className==='delete-item secondary-content')
+    if(e.target.parentElement.classList.contains('delete-item')){
+        console.log(e.target);
+        e.target.parentElement.parentElement.remove();
+    };
+};
