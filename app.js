@@ -1,35 +1,37 @@
-//Event Bubbling
-// cardTitle=document.querySelector('.card-title');
-// cardTitle.addEventListener('click',function(){
-//     console.log(cardTitle);
-// });
+//Set Local Storage Item
+//localStorage.setItem('name','John');
+//localStorage.setItem('age','30');
 
-// cardContent=document.querySelector('.card-content');
-// cardContent.addEventListener('click',function(){
-//     console.log(cardContent);
-// });
+//Set Session Storage Item
+//sessionStorage.setItem('name','beth');
 
-// card=document.querySelector('.card');
-// card.addEventListener('click',function(){
-//     console.log(card);
-// });
+//Remove Item from Storage
+//localStorage.removeItem('name');
 
-// col=document.querySelector('.col');
-// col.addEventListener('click',function(){
-//     console.log(col);
-// });
+//get Item form Storage
+//const name=localStorage.getItem('name');
+//const age=localStorage.getItem('age');
 
-//Event delegation
-// const delItem=document.querySelector('.delete-item');
-// delItem.addEventListener('click',deleteItem);
+//Clear Storage
+//localStorage.clear();
 
-//Instead of puttin event listerner on individual element let put it on the parent 
-document.body.addEventListener('click',deleteItem);
+//console.log(name,age);
 
-function deleteItem(e){
-    // if(e.target.parentElement.className==='delete-item secondary-content')
-    if(e.target.parentElement.classList.contains('delete-item')){
-        console.log(e.target);
-        e.target.parentElement.parentElement.remove();
-    };
-};
+document.querySelector('form').addEventListener('submit',function(e){
+    const task=document.querySelector('#task').value;
+    console.log(task);
+    let tasks;
+    if(localStorage.getItem('task')===null){
+        tasks=[];
+    }else{
+        tasks=JSON.parse(localStorage.getItem('task'));
+    }
+    tasks.push(task);
+    localStorage.setItem('task',JSON.stringify(tasks));
+    e.preventDefault();
+});
+
+tasks=JSON.parse(localStorage.getItem('task'));
+tasks.forEach(function(task){
+    console.log(task);
+});
